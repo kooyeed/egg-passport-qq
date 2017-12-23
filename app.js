@@ -13,15 +13,10 @@ module.exports = app => {
             id: profile.id,
             name: profile.nickname,
             displayName: profile.nickname,
-            photo: profile.figureurl_qq_2,
-            emails: '',
+            photo: profile._json && profile._json.figureurl_qq_2 && profile._json.figureurl_qq_2.replace('http://', 'https://'),
+            emails: 'unset',
             accessToken: accessToken,
             refreshToken: refreshToken,
-
-            gender: profile.gender,
-            province: profile.province,
-            city: profile.city,
-            year: profile.year,
         };
         
         app.passport.doVerify(req, user, done);
